@@ -12,6 +12,11 @@ const mix = require('laravel-mix');
  */
 
 mix.js('resources/js/app.js', 'public/js')
-    .postCss('resources/css/app.css', 'public/css', [
-        //
-    ]);
+    .less('resources/less/auth/auth.less', 'public/css/auth.css')
+    .less('resources/less/app.less', 'public/css/app.css');
+
+mix.browserSync('market.loc');
+
+if (mix.inProduction()) {
+    mix.version();
+}

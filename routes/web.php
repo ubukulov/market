@@ -1,7 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\IndexController;
+use App\Http\Controllers\AuthController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,6 +14,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [IndexController::class, 'welcome'])->name('home');
+Route::get('/login', [AuthController::class, 'loginForm'])->name('loginForm');
+Route::get('/restore-password', [AuthController::class, 'restorePassword'])->name('restorePassword');
+Route::get('/change-password', [AuthController::class, 'changePassword'])->name('changePassword');
+Route::get('/register', [AuthController::class, 'registerForm'])->name('registerForm');
