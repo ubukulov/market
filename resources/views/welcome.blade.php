@@ -17,25 +17,11 @@
         <h4>Наши преимущества</h4>
     </div>
 
-    <div class="our_advantages_section">
-        <div>
-            <img src="{{ asset('img/main/mobile.png') }}" alt="mobile">
-            <span>Мобильные телефоны</span>
-        </div>
+    <div class="main_content">
 
-        <div>
-            <img src="{{ asset('img/main/laptop.png') }}" alt="laptop">
-            <span>Ноутбуки</span>
-        </div>
+        @include('partials.advantages')
 
-        <div>
-            <img src="{{ asset('img/main/home.png') }}" alt="home">
-            <span>Дом и офис</span>
-        </div>
+        @include('partials.popular_cats')
 
-        <div>
-            <img src="{{ asset('img/main/desktop.png') }}" alt="desktop">
-            <span>ПК и комплектующие</span>
-        </div>
     </div>
 @stop

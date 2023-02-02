@@ -1,3 +1,6 @@
+.main_content {
+  padding: 40px 200px;
+}
 .menu nav {
   background-color: #ffffff !important;
 }
@@ -51,8 +54,11 @@
   text-decoration: none;
   padding: 10px 100px;
 }
+.text-right {
+  text-align: right;
+}
 .our_advantages_section {
-  padding: 30px 300px;
+  padding: 30px 0px;
 }
 .our_advantages_section div {
   display: inline-block;
@@ -66,5 +72,11 @@
   font-size: 20px;
   font-weight: 500;
   margin-top: 50px;
+}
+.our_advantages_sec div {
+  display: block;
+}
+.our_advantages_sec .adv__block div {
+  display: inline-block;
 }
 
