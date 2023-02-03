@@ -1,7 +1,9 @@
 <div class="menu">
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">FD Design</a>
+            <a class="navbar-brand" href="{{ route('home') }}">
+                <img src="{{ asset('img/main/logo.png') }}" alt="logo">
+            </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -27,6 +29,10 @@
 
                     <li class="nav-item">
                         <a class="nav-link b2b_portal_btn" href="#">B2B portal</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link b2b_portal_btn my_shop_btn" href="#">Мой магазин</a>
                     </li>
 
                     <li class="nav-item basket_link">

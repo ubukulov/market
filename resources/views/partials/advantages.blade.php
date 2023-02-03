@@ -1,4 +1,4 @@
-<div class="our_advantages_sec">
+<div class="our_advantages_sec p40_200">
     <div class="adv__block">
         <div class="adv__block_img">
             <img src="{{ asset('img/main/oadv_1.svg') }}" alt="adv1">
