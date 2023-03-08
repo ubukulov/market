@@ -118,4 +118,83 @@
   background-color: #373946 !important;
   color: #ffffff !important;
 }
+.main_menu {
+  background-color: #ffffff;
+  position: absolute;
+  left: 400px;
+  padding: 15px;
+  height: 400px;
+  width: 1200px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+.main_menu .parentMenuListItem {
+  color: #373946;
+  padding: 10px 16px;
+  width: 480px;
+}
+.main_menu .parentMenuListItem:hover {
+  border: 1px solid #39C874;
+  border-radius: 10px;
+  cursor: pointer;
+  color: #39C874;
+}
+.main_menu .parentMenuListItem:after {
+  content: url("/img/nav/right.svg");
+  float: right;
+}
+.main_menu .parentMenuListItem:hover > .subMenuList2 {
+  visibility: visible;
+  opacity: 1;
+  transform: translateY(10px);
+  transition: 0.5s ease-in-out;
+  z-index: 5000;
+}
+.main_menu .subMenuList2 {
+  position: absolute;
+  left: 500px;
+  width: 350px;
+  visibility: hidden;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: 0.5s ease-in-out;
+  z-index: 5000;
+}
+.main_menu .subMenuList2 .subMenuList2_item {
+  color: #373946;
+  padding: 10px 16px;
+}
+.main_menu .subMenuList2 .subMenuList2_item:hover {
+  border: 1px solid #39C874;
+  border-radius: 10px;
+  cursor: pointer;
+  color: #39C874;
+}
+.main_menu .subMenuList3 {
+  width: 450px;
+  position: absolute;
+  left: 350px;
+  visibility: hidden;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: 0.5s ease-in-out;
+  z-index: 5000;
+}
+.main_menu .subMenuList3 .subMenuList3_item {
+  color: #373946;
+  padding: 10px 16px;
+}
+.main_menu .subMenuList3 .subMenuList3_item:hover {
+  border: 1px solid #39C874;
+  border-radius: 10px;
+  cursor: pointer;
+  color: #39C874;
+}
+.main_menu .subMenuList2_item:hover > .subMenuList3 {
+  visibility: visible;
+  opacity: 1;
+  transform: translateY(10px);
+  transition: 0.5s ease-in-out;
+  z-index: 5000;
+}
 

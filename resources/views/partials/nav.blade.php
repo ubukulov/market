@@ -7,10 +7,11 @@
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
+
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link active" href="#">Категории</a>
+                    <li class="nav-item categories">
+                        <a class="nav-link" href="#">Категории</a>
                     </li>
 
                     <li class="nav-item">
@@ -50,5 +51,42 @@
             </div>
         </div>
     </nav>
+
+    <div class="main_menu">
+        @foreach($categories as $category)
+            <div class="parentMenuListItem">
+                {{ $category->name }}
+
+                @php
+                    $carItems2 = $category->getItems()
+                @endphp
+
+                @if(count($carItems2) > 0)
+                    <div class="subMenuList2">
+                        @foreach($carItems2 as $item2)
+                            <div class="subMenuList2_item">
+                                {{ $item2->name }}
+
+                                @php
+                                    $carItems3 = $item2->getItems()
+                                @endphp
+
+                                @if(count($carItems3) > 0)
+
+                                    <div class="subMenuList3">
+                                        @foreach($carItems3 as $item3)
+                                            <div class="subMenuList3_item">
+                                                {{ $item3->name }}
+                                            </div>
+                                        @endforeach
+                                    </div>
+                                @endif
+                            </div>
+                        @endforeach
+                    </div>
+                @endif
+            </div>
+        @endforeach
+    </div>
 
 </div>

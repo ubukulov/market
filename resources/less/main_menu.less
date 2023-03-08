@@ -1,0 +1,93 @@
+.main_menu{
+    background-color: #ffffff;
+    position: absolute;
+    left: 400px;
+    padding: 15px;
+    height: 400px;
+    width: 1200px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+
+
+    .parentMenuListItem {
+        color: #373946;
+        padding: 10px 16px;
+        width: 480px;
+
+        &:hover{
+            border: 1px solid #39C874;
+            border-radius: 10px;
+            cursor: pointer;
+            color: #39C874;
+        }
+
+        &:after {
+            content: url("/img/nav/right.svg");
+            float: right;
+        }
+    }
+
+    .parentMenuListItem:hover > .subMenuList2 {
+        visibility: visible;
+        opacity: 1;
+        transform: translateY(10px);
+        transition: .5s ease-in-out;
+        z-index: 5000;
+    }
+
+    .subMenuList2 {
+        position: absolute;
+        left: 500px;
+        width: 350px;
+        visibility: hidden;
+        opacity: 0;
+        transform: translateY(10px);
+        transition: .5s ease-in-out;
+        z-index: 5000;
+
+        .subMenuList2_item {
+            color: #373946;
+            padding: 10px 16px;
+
+            &:hover {
+                border: 1px solid #39C874;
+                border-radius: 10px;
+                cursor: pointer;
+                color: #39C874;
+            }
+        }
+    }
+
+    .subMenuList3 {
+        width: 450px;
+        position: absolute;
+        left: 350px;
+        visibility: hidden;
+        opacity: 0;
+        transform: translateY(10px);
+        transition: .5s ease-in-out;
+        z-index: 5000;
+
+        .subMenuList3_item {
+            color: #373946;
+            padding: 10px 16px;
+
+            &:hover {
+                border: 1px solid #39C874;
+                border-radius: 10px;
+                cursor: pointer;
+                color: #39C874;
+            }
+        }
+    }
+
+    .subMenuList2_item:hover > .subMenuList3 {
+        visibility: visible;
+        opacity: 1;
+        transform: translateY(10px);
+        transition: .5s ease-in-out;
+        z-index: 5000;
+    }
+}
+
+
