@@ -197,4 +197,7 @@
   transition: 0.5s ease-in-out;
   z-index: 5000;
 }
+.category {
+  background-color: #F3F5F9;
+}
 

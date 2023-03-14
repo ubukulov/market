@@ -52,7 +52,7 @@
         </div>
     </nav>
 
-    <div class="main_menu">
+    <div class="main_menu" style="display: none">
         @foreach($categories as $category)
             <div class="parentMenuListItem">
                 {{ $category->name }}
@@ -65,7 +65,7 @@
                     <div class="subMenuList2">
                         @foreach($carItems2 as $item2)
                             <div class="subMenuList2_item">
-                                {{ $item2->name }}
+                                <a href="{{ route('category.products', ['id' => $item2->id]) }}">{{ $item2->name }}</a>
 
                                 @php
                                     $carItems3 = $item2->getItems()

@@ -9,10 +9,6 @@ class IndexController extends BaseController
 {
     public function welcome()
     {
-        //$categories = Category::getTree();
-        //dd($categories);
-        $categories = Category::where('level', 1)->get();
-        //dd($categories[0]->getItems());
-        return view('welcome', compact('categories'));
+        return view('welcome');
     }
 }
