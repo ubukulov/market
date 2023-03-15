@@ -9,6 +9,6 @@ class AlStyle extends Facade
 {
     protected static function getFacadeAccessor()
     {
-        return 'AlStyle';
+        return 'Style';
     }
 }

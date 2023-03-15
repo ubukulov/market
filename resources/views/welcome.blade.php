@@ -43,6 +43,5 @@
             </p>
         </div>
 
-        @include('partials.footer')
     </div>
 @stop

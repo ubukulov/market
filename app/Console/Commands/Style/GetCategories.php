@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Console\Commands;
+namespace App\Console\Commands\Style;
 
 use App\Models\Category;
 use Illuminate\Console\Command;
-use AlStyle;
+use Style;
 
 class GetCategories extends Command
 {
@@ -39,7 +39,7 @@ class GetCategories extends Command
      */
     public function handle()
     {
-        $alStyleCategories = AlStyle::getCategories();
+        $alStyleCategories = Style::getCategories();
         foreach (json_decode($alStyleCategories) as $item) {
             $cat = Category::where('foreign_id', $item->id)->first();
             if(!$cat) {

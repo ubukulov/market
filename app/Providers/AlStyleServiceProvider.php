@@ -14,7 +14,7 @@ class AlStyleServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->bind('AlStyle', AlStyle::class);
+        $this->app->bind('Style', AlStyle::class);
     }
 
     /**
