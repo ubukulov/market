@@ -22,4 +22,30 @@ class Product extends Model
     {
         return $this->belongsTo(Category::class);
     }
+
+    public function images()
+    {
+        return $this->hasMany(ProductImage::class);
+    }
+
+    public function thumb()
+    {
+        return $this->hasMany(ProductImage::class)->where('thumbs', 1);
+    }
+
+    public function getThumb()
+    {
+        $thumbs = $this->thumb;
+        if(isset($thumbs[0])) {
+            return $thumbs[0]->path;
+        }
+        return false;
+    }
+
+    public function getQuantity()
+    {
+        $quantity = str_replace('>', '', $this->quantity);
+        $quantity = str_replace('<', '', $quantity);
+        return (int) $quantity;
+    }
 }

@@ -52,7 +52,7 @@
         </div>
     </nav>
 
-    <div class="main_menu" style="display: none">
+    <div class="main_menu hidden">
         @foreach($categories as $category)
             <div class="parentMenuListItem">
                 {{ $category->name }}
@@ -64,7 +64,7 @@
                 @if(count($carItems2) > 0)
                     <div class="subMenuList2">
                         @foreach($carItems2 as $item2)
-                            <div class="subMenuList2_item">
+                            <div class="subMenuList2_item @if(count($item2->getItems()) > 0) hasItem @endif">
                                 <a href="{{ route('category.products', ['id' => $item2->id]) }}">{{ $item2->name }}</a>
 
                                 @php
@@ -90,3 +90,15 @@
     </div>
 
 </div>
+
+@push('js')
+    <script>
+        /*$(document).ready(function(){
+            $(".categories").hover(function(){
+                $(".main_menu").removeClass('hidden');
+            }, function(){
+                //$(".main_menu").addClass('hidden');
+            });
+        });*/
+    </script>
+@endpush

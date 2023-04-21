@@ -49,4 +49,9 @@ class Category extends Model
     {
         return Category::whereRaw("categories.left > " . $this->left . " AND categories.right < " . $this->right . ' AND categories.level=' . $this->level . ' +1')->get();
     }
+
+    public function products()
+    {
+        return $this->hasMany(Product::class);
+    }
 }
