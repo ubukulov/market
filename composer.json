@@ -13,7 +13,6 @@
         "laravel/sanctum": "^2.11",
         "laravel/tinker": "^2.5",
         "predis/predis": "^2.1",
-        "ext-redis": "*",
         "ext-curl": "*"
     },
     "require-dev": {

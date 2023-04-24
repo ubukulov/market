@@ -1,6 +1,15 @@
 #wrap {
   width: 100%;
 }
+.content {
+  background-color: #F3F5F9;
+}
+.main_content {
+  width: 1480px;
+  margin: 0 auto;
+  background-color: #F3F5F9;
+  padding: 40px 0px;
+}
 .p40_200 {
   padding: 40px 200px;
 }
@@ -225,16 +234,18 @@
   content: url("/img/nav/right.svg");
   float: right;
 }
-.category {
+.category-title {
   background-color: #F3F5F9;
+  padding-bottom: 20px;
 }
 .product_card {
   background-color: #ffffff;
   width: 280px;
-  margin: 0 auto 20px auto;
+  margin: 0 20px 20px 0;
   padding: 10px;
   box-shadow: 10px 5px 5px #f3f5f9;
   border-radius: 10px;
+  display: inline-grid;
 }
 .product_card .product_img {
   text-align: center;
@@ -249,6 +260,14 @@
 .product_card .product_info {
   color: #6D6F80;
 }
+.product_card .product_count_cart_btns {
+  justify-content: space-between;
+  display: flex;
+}
+.product_card .product_count_cart_btns div {
+  float: left;
+  justify-content: space-between;
+}
 .product_card .product_count_cart_btns .product_count_btn .product_count_item {
   background: #F0F0F6;
   border-radius: 8px;
@@ -258,5 +277,53 @@
   background: #454C5B;
   border-radius: 12px;
   color: #ffffff;
+  border: 1px solid #454C5B;
+  padding: 5px 20px;
+}
+.product_card .product_barcode_print_btn {
+  width: 100%;
+  padding: 10px 0;
+}
+.product_card .product_barcode_print_btn button {
+  width: 100%;
+  background: #F0F0F6;
+  border-radius: 12px;
+  border: none;
+  padding: 4px;
+}
+.product_content_pagination {
+  text-align: right;
+}
+.product_filter_block {
+  background-color: #ffffff;
+  padding: 20px 20px;
+  border-radius: 10px;
+  margin-bottom: 30px;
+}
+.product_filter_block .product_filter_header {
+  display: flex;
+  justify-content: space-between;
+}
+.product_filter_block .product_filter_header div {
+  display: inline-grid;
+  justify-content: space-between;
+}
+.product_filter_block .product_filter_header .p__filter_title {
+  font-size: 20px;
+  font-weight: bold;
+}
+.product_filter_block .product_filter_header .p__filter_reset a {
+  color: #39C874;
+  text-decoration: none;
+}
+.product_filter_block .product_filter_content {
+  padding-top: 20px;
+}
+.product_filter_block .product_filter_content div {
+  margin: 10px 0;
+}
+.product_filter_block .product_filter_content div input,
+.product_filter_block .product_filter_content div label {
+  cursor: pointer;
 }
 

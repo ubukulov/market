@@ -4,10 +4,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Cviebrock\EloquentSluggable\Sluggable;
 
 class Category extends Model
 {
-    use HasFactory;
+    use HasFactory, Sluggable;
 
     protected $table = 'categories';
     protected static $left = 0;
@@ -15,12 +16,21 @@ class Category extends Model
     protected static $id = 0;
 
     protected $fillable = [
-        'foreign_id', 'name', 'left', 'right', 'level'
+        'foreign_id', 'name', 'slug', 'left', 'right', 'level'
     ];
 
     protected $dates = [
         'created_at', 'updated_at'
     ];
+
+    public function sluggable()
+    {
+        return [
+            'slug' => [
+                'source' => 'name'
+            ]
+        ];
+    }
 
     public static function getTree()
     {

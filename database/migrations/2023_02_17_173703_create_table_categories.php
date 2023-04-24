@@ -17,6 +17,7 @@ class CreateTableCategories extends Migration
             $table->id();
             $table->integer('foreign_id');
             $table->string('name');
+            $table->string('slug', 500)->unique();
             $table->integer('left')->nullable();
             $table->integer('right')->nullable();
             $table->integer('level')->default(0);
