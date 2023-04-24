@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ProductController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -22,4 +23,5 @@ Route::get('/change-password', [AuthController::class, 'changePassword'])->name(
 Route::get('/register', [AuthController::class, 'registerForm'])->name('registerForm');
 
 # Category
-Route::get('category/{id}', [CategoryController::class, 'show'])->name('category.products');
+Route::get('{slug}', [CategoryController::class, 'show'])->name('category.products');
+Route::get('p/{slug}', [ProductController::class, 'show'])->name('product.page');

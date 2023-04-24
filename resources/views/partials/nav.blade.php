@@ -65,7 +65,7 @@
                     <div class="subMenuList2">
                         @foreach($carItems2 as $item2)
                             <div class="subMenuList2_item @if(count($item2->getItems()) > 0) hasItem @endif">
-                                <a href="{{ route('category.products', ['id' => $item2->id]) }}">{{ $item2->name }}</a>
+                                <a href="{{ route('category.products', ['slug' => $item2->slug]) }}">{{ $item2->name }}</a>
 
                                 @php
                                     $carItems3 = $item2->getItems()

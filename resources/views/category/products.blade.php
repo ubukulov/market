@@ -9,19 +9,21 @@
             <div class="col-md-9">
                 @foreach($products as $product)
                     <div class="product_card">
-                        <div class="product_img">
-                            <img src="{{ $product->getThumb() }}" alt="">
-                        </div>
+                        <a href="{{ route('product.page', ['slug' => $product->slug]) }}">
+                            <div class="product_img">
+                                <img src="{{ $product->getThumb() }}" alt="">
+                            </div>
 
-                        <div class="product_title">
-                            <span>{{ $product->name }}</span>
-                        </div>
+                            <div class="product_title">
+                                <span>{{ $product->name }}</span>
+                            </div>
 
-                        <div class="product_info">
-                            <p>Артикуль: {{ $product->article }}</p>
-                            <p>в наличии: {{ $product->getQuantity() }}</p>
-                            <p>549 990 тг / 468 000 тг (шт)</p>
-                        </div>
+                            <div class="product_info">
+                                <p>Артикуль: {{ $product->article }}</p>
+                                <p>в наличии: {{ $product->getQuantity() }}</p>
+                                <p>549 990 тг / 468 000 тг (шт)</p>
+                            </div>
+                        </a>
 
                         <div class="product_count_cart_btns">
                             <div class="product_count_btn">
@@ -91,22 +93,22 @@
 
                     <div class="product_filter_content">
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="1" id="flexCheckDefault1">
-                            <label class="form-check-label" for="flexCheckDefault1">
+                            <input class="form-check-input" type="checkbox" value="1" id="flexCheckDefault11">
+                            <label class="form-check-label" for="flexCheckDefault11">
                                 Название
                             </label>
                         </div>
 
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="2" id="flexCheckDefault2">
-                            <label class="form-check-label" for="flexCheckDefault2">
+                            <input class="form-check-input" type="checkbox" value="2" id="flexCheckDefault22">
+                            <label class="form-check-label" for="flexCheckDefault22">
                                 Артикуль
                             </label>
                         </div>
 
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="3" id="flexCheckDefault3">
-                            <label class="form-check-label" for="flexCheckDefault3">
+                            <input class="form-check-input" type="checkbox" value="3" id="flexCheckDefault33">
+                            <label class="form-check-label" for="flexCheckDefault33">
                                 Цена
                             </label>
                         </div>
