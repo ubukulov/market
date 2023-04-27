@@ -5,6 +5,7 @@ use App\Http\Controllers\IndexController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\CartController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -23,5 +24,14 @@ Route::get('/change-password', [AuthController::class, 'changePassword'])->name(
 Route::get('/register', [AuthController::class, 'registerForm'])->name('registerForm');
 
 # Category
-Route::get('{slug}', [CategoryController::class, 'show'])->name('category.products');
+Route::get('c/{slug}', [CategoryController::class, 'show'])->name('category.products');
 Route::get('p/{slug}', [ProductController::class, 'show'])->name('product.page');
+
+# Cart
+Route::group(['prefix' => 'cart'], function(){
+    Route::post('/add', [CartController::class, 'add'])->name('cart.add');
+    Route::get('/', [CartController::class, 'index'])->name('cart.index');
+    Route::get('{hash}/delete', [CartController::class, 'delete'])->name('cart.delete');
+    Route::get('/empty', [CartController::class, 'cartEmpty'])->name('cart.empty');
+});
+

@@ -37,8 +37,8 @@
                     </li>
 
                     <li class="nav-item basket_link">
-                        <a class="nav-link" href="#">
-                            <img src="{{ asset('img/main/basket.png') }}" alt="">
+                        <a class="nav-link" href="{{ route('cart.index') }}">
+                            <img src="{{ asset('img/main/cart.svg') }}" alt="">
                         </a>
                     </li>
 

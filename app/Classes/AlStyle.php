@@ -70,4 +70,12 @@ class AlStyle
         $result = json_decode($response->getBody()->getContents());
         return (array) $result;
     }
+
+    public function getProperties($article)
+    {
+        $client = new Client(['base_uri' => env('AL_STYLE_API')]);
+        $response = $client->request('GET', 'properties?access-token=' . env('AL_STYLE_TOKEN') . '&article=' . $article);
+        $result = $response->getBody()->getContents();
+        return json_decode($result);
+    }
 }

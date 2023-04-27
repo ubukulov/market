@@ -58,4 +58,19 @@ class Product extends Model
         $quantity = str_replace('<', '', $quantity);
         return (int) $quantity;
     }
+
+    public function getRelatedProducts()
+    {
+        //$products = Product::where(['category_id' => $this->category_id, ''])
+    }
+
+    public function getPriceFormatter($price = 1)
+    {
+        return ($price == 1) ? number_format($this->price2, 0, ',', ' ') : number_format($this->price1, 0, ',', ' ');
+    }
+
+    public function getLink()
+    {
+        return route('product.page', ['slug' => $this->slug]);
+    }
 }

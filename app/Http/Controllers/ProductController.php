@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Style;
 
 class ProductController extends BaseController
 {
@@ -11,6 +12,8 @@ class ProductController extends BaseController
     {
         $product = Product::whereSlug($slug)->first();
         $images = $product->images;
-        return view('product.show', compact('product', 'images'));
+        //dd(Style::getProperties($product->article)->elements[0]->properties);
+        $properties = Style::getProperties($product->article);
+        return view('product.show', compact('product', 'images', 'properties'));
     }
 }

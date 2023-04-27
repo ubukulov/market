@@ -175,6 +175,7 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         App\Providers\AlStyleServiceProvider::class,
+        Jackiedo\Cart\CartServiceProvider::class,
     ],
 
     /*
@@ -230,6 +231,7 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'Style' => App\Facades\AlStyle::class,
+        'Cart' => Jackiedo\Cart\Facades\Cart::class,
     ],
 
 ];
