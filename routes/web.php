@@ -22,6 +22,7 @@ Route::get('/login', [AuthController::class, 'loginForm'])->name('loginForm');
 Route::get('/restore-password', [AuthController::class, 'restorePassword'])->name('restorePassword');
 Route::get('/change-password', [AuthController::class, 'changePassword'])->name('changePassword');
 Route::get('/register', [AuthController::class, 'registerForm'])->name('registerForm');
+Route::post('/registration', [AuthController::class, 'registration']);
 
 # Category
 Route::get('c/{slug}', [CategoryController::class, 'show'])->name('category.products');

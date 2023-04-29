@@ -11,6 +11,11 @@
   text-align: center;
   margin-bottom: 50px;
 }
+.login-form .login_elements h6 {
+  color: #373946;
+  font-size: 14px;
+  margin-bottom: 20px;
+}
 .login-form .login_elements .auth_input_email {
   border-radius: 5px;
   background: #ffffff url("/img/auth/email.png") no-repeat scroll 12px 12px;
@@ -32,8 +37,11 @@
 .login-form .login_elements .auth_form_links div:last-child {
   float: right;
 }
-.login-form .login_elements button[type='submit'] {
+.login-form .login_elements .auth_next_btn {
   width: 100%;
+  background-color: #39C874;
+  border-radius: 10px;
+  border-color: #39C874;
 }
 .login-form .login_elements .auth_a_links {
   color: #39C874;
@@ -41,5 +49,30 @@
 }
 .login-form .login_elements label[for='flexCheckDefault'] {
   margin-left: 10px;
+}
+.login-form .login_elements .carousel .carousel-indicators button {
+  background-color: #39C874;
+}
+.login-form .login_elements .carousel-indicators {
+  bottom: 120px !important;
+}
+.auth_error_text {
+  font-size: 14px;
+  color: red;
+}
+.register_success {
+  text-align: center;
+}
+.register_success p {
+  color: #373946;
+  font-size: 14px;
+  margin-bottom: 30px;
+}
+.register_success a {
+  background: #39C874;
+  border-radius: 10px;
+  padding: 10px 100px;
+  color: #fff;
+  text-decoration: none;
 }
 
