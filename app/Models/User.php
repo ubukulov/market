@@ -28,6 +28,7 @@ class User extends Authenticatable
         'bank',
         'iik',
         'full_name_director',
+        'full_name'
     ];
 
     /**

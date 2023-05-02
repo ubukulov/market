@@ -6,7 +6,7 @@
                 <div class="login_elements">
                     <h4>Регистрация</h4>
 
-                    <div id="carouselExampleIndicators" class="carousel slide" data-bs-touch="false" data-bs-interval="false">
+                    <div v-if="!register_success" id="carouselExampleIndicators" class="carousel slide" data-bs-touch="false" data-bs-interval="false">
                         <div class="carousel-indicators">
                             <button type="button" disabled data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" :class="{'active' : step===1}" aria-current="true" aria-label="Slide 1"></button>
                             <button type="button" disabled data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" :class="{'active' : step===2}" aria-label="Slide 2"></button>
@@ -98,7 +98,7 @@
 
                         <p>Ожидайте подтверждения. На указанную почту будет отправлена ссылка. Перейдите по ней для завершения регистрации. </p>
 
-                        <a href="">На главную</a>
+                        <a href="{{ route('home') }}">На главную</a>
                     </div>
 
                 </div>
