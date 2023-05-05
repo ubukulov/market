@@ -5,7 +5,7 @@
             <div class="login-form">
                 <div class="login_elements">
                     <h4>Вход</h4>
-                    <form action="" method="post">
+                    <form action="{{ route('authentication') }}" method="post">
                         @csrf
                         <div class="form-group">
                             <span class="auth_email_icon"></span>

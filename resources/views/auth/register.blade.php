@@ -89,7 +89,7 @@
                         </div>
 
                         <div class="form-group mt-5">
-                            <p><span>Есть аккаунт?</span>&nbsp;<a href="{{ route('loginForm') }}" class="auth_a_links">Войти</a></p>
+                            <p><span>Есть аккаунт?</span>&nbsp;<a href="{{ route('login') }}" class="auth_a_links">Войти</a></p>
                         </div>
                     </div>
 

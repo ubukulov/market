@@ -52,9 +52,9 @@
                                 <td>В упаковке</td>
                                 <td>
                                     <div class="product_count_btn">
-                                        <img @click="decrementProductCount()" src="{{ asset('img/product/minus.svg') }}" alt="">
-                                        <input v-model="product_count" class="product_count_item" type="text">
-                                        <img @click="incrementProductCount()" src="{{ asset('img/product/plus.svg') }}" alt="">
+                                        <img @click="decrementProductCount({{ $cartItem['cart']['id'] }})" src="{{ asset('img/product/minus.svg') }}" alt="">
+                                        <input v-model="product_count[getProductIndexInArray({{ $cartItem['cart']['id'] }})].cart.quantity" class="product_count_item" type="text">
+                                        <img @click="incrementProductCount({{ $cartItem['cart']['id'] }})" src="{{ asset('img/product/plus.svg') }}" alt="">
                                     </div>
                                 </td>
                                 <td>
@@ -73,7 +73,7 @@
                     </table>
 
                     <div class="mt-3 text-right">
-                        <a href="#" class="cart_checkout_btn">Отправить заявку</a>
+                        <a href="{{ route('cart.order') }}" class="cart_checkout_btn">Отправить заявку</a>
                     </div>
                 </div>
             </div>
@@ -87,7 +87,9 @@
             el: '#wrap',
             data () {
                 return {
-                    product_count: 1,
+                    product_count: <?php echo json_encode($cart_items); ?>,
+                    toastHtml: '',
+                    toastSuccess: false
                 }
             },
             methods: {
@@ -103,14 +105,32 @@
                             console.log(err);
                         })
                 },
-                incrementProductCount(){
-                    this.product_count++;
+                incrementProductCount(product_id){
+                    this.product_count.forEach((el) => {
+                        if(el.cart.id === product_id) {
+                            el.cart.quantity++;
+                        }
+                    })
                 },
-                decrementProductCount(){
-                    if(this.product_count !== 1) {
-                        this.product_count--;
+                decrementProductCount(product_id){
+                    if(this.product_count.findIndex(x => x.cart.id === product_id) >= 0) {
+                        this.product_count.forEach((el) => {
+                            if(el.cart.id === product_id && el.cart.quantity > 1) {
+                                el.cart.quantity--;
+                            }
+                        })
                     }
                 },
+                getProductIndexInArray(product_id){
+                    for(let i = 0; i < this.product_count.length; i++) {
+                        if(this.product_count[i].cart.id === product_id) {
+                            return i;
+                        }
+                    }
+                }
+            },
+            created(){
+                console.log(this.product_count)
             }
         });
     </script>

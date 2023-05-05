@@ -20,11 +20,31 @@ a {
     padding: 10px 50px;
     color: #fff;
 }
+.cart_count_elements {
+    background: url(/img/main/cart_number.svg) no-repeat;
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    background-size: cover;
+    font-size: 18px;
+    top: 5px;
+    margin-left: 10px;
+    text-align: center;
+    color: #fff;
+    padding-top: 2px;
+}
 .p40_200 {
     padding: 40px 200px;
 }
 .f3f5f9 {
     background-color: #f3f5f9;
+}
+.categories:hover ~ .main_menu{
+    visibility: visible;
+    opacity: 1;
+    transform: translateY(10px);
+    transition: .5s ease-in-out;
+    z-index: 5000;
 }
 .menu{
 
@@ -53,10 +73,6 @@ a {
         background: #F0F0F6 url("/img/main/search.png") no-repeat scroll 12px 12px;
         padding-left: 40px;
         border-radius: 12px;
-    }
-
-    .categories:hover + .main_menu {
-        display: block !important;
     }
 }
 
@@ -178,4 +194,59 @@ a {
 .toast {
     background-color: #39C874 !important;
     color: #fff;
+}
+.auth_user:hover ~ .auth_user_information {
+    visibility: visible;
+    opacity: 1;
+    transform: translateY(10px);
+    transition: .5s ease-in-out;
+    z-index: 5000;
+}
+.auth_user_information {
+    background-color: #fff;
+    border-radius: 10px;
+    position: absolute;
+    text-align: center;
+    padding: 30px 20px;
+    top: 40px;
+    visibility: hidden;
+
+    &:hover {
+        visibility: visible;
+        opacity: 1;
+        transform: translateY(10px);
+        transition: .5s ease-in-out;
+        z-index: 5000;
+    }
+
+    .user_full_name {
+        color: #373946;
+        font-weight: 500;
+        font-size: 18px;
+    }
+
+    .user_email {
+        color: #6D6F80;
+        font-size: 16px;
+    }
+
+    .auth_user_links {
+        text-align: center;
+        width: 100%;
+        a {
+            color: #373946;
+            display: inline-block;
+            margin-bottom: 10px;
+            padding: 4px;
+            border: 1px solid #fff;
+            width: 100%;
+
+            &:hover {
+                color: #39C874;
+                border: 1px solid #39C874;
+                border-radius: 10px;
+                padding: 4px;
+            }
+        }
+    }
 }

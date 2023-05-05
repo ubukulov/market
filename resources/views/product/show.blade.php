@@ -89,19 +89,6 @@
                 НУЖНО РЕАЛИЗОВАТЬ!
             </div>
         </div>
-
-        <div class="toast-container" style="position: absolute; top: 10px; right: 10px;">
-            <div id="toast" class="toast fade">
-                <div class="toast-header">
-                    <strong class="me-auto"><i class="fa fa-commenting" aria-hidden="true"></i> Сообщение</strong>
-                    <small>только что</small>
-                    <button type="button" class="btn-close" data-bs-dismiss="toast"></button>
-                </div>
-                <div class="toast-body">
-                    Товар успешно добавлен в корзину!
-                </div>
-            </div>
-        </div>
     </div>
 @stop
 
@@ -112,7 +99,9 @@
             data () {
                 return {
                     product_count: 1,
-                    product_id: "<?php echo $product->id ?>"
+                    product_id: "<?php echo $product->id ?>",
+                    toastHtml: '',
+                    toastSuccess: false
                 }
             },
             methods: {
@@ -123,7 +112,8 @@
                     axios.post('/cart/add', formData)
                         .then(res => {
                             console.log(res);
-                            $("#toast").addClass("show");
+                            this.toastHtml = res.data;
+                            this.toastSuccess = true;
                         })
                         .catch(err => {
                             console.log(err);

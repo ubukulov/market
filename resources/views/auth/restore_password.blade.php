@@ -20,7 +20,7 @@
                         </div>
 
                         <div class="form-group text-center">
-                            <p><a href="{{ route('loginForm') }}" class="auth_a_links restore_a_link">Отмена</a></p>
+                            <p><a href="{{ route('login') }}" class="auth_a_links restore_a_link">Отмена</a></p>
                         </div>
                     </form>
                 </div>

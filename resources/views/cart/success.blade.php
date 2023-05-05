@@ -13,9 +13,10 @@
                     </div>
 
                     <div style="margin-bottom: 20px">
-                        <span>Корзина пустая!</span>
+                        <span>Заявка отправлена! </span>
                         <br>
                         <br>
+                        <p>Менеджер свяжется с Вами в течение 15 минут. </p>
                     </div>
 
                     <div style="margin-top: 30px">

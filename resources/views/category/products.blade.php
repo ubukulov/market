@@ -27,13 +27,13 @@
 
                         <div class="product_count_cart_btns">
                             <div class="product_count_btn">
-                                <img src="{{ asset('img/product/minus.svg') }}" alt="">
-                                <span class="product_count_item">0</span>
-                                <img src="{{ asset('img/product/plus.svg') }}" alt="">
+                                <img @click="decrementProductCount({{ $product }})" src="{{ asset('img/product/minus.svg') }}" alt="">
+                                <input v-model="product_count[getProductIndexInArray({{$product}})].count" readonly class="product_count_item" type="text">
+                                <img @click="incrementProductCount({{ $product }})" src="{{ asset('img/product/plus.svg') }}" alt="">
                             </div>
 
                             <div class="product_cart_add_btn">
-                                <button type="button">В корзину</button>
+                                <button @click="cartAdd({{ $product->id }})" type="button">В корзину</button>
                             </div>
                         </div>
 
@@ -119,3 +119,68 @@
         </div>
     </div>
 @stop
+@push('scripts')
+    <script>
+        new Vue({
+            el: '#wrap',
+            data () {
+                return {
+                    product_count: [],
+                    toastHtml: '',
+                    toastSuccess: false
+                }
+            },
+            methods: {
+                cartAdd(product_id){
+                    let formData = new FormData();
+                    formData.append('product_id', product_id);
+                    this.product_count.forEach((el) => {
+                        if(el.id === product_id) {
+                            formData.append('product_count', el.count);
+                        }
+                    });
+
+                    axios.post('/cart/add', formData)
+                        .then(res => {
+                            console.log(res);
+                            this.toastHtml = res.data;
+                            this.toastSuccess = true;
+                        })
+                        .catch(err => {
+                            console.log(err);
+                        })
+                },
+                incrementProductCount(product){
+                    if(this.product_count.findIndex(x => x.id === product.id) < 0) {
+                        this.product_count.push({id: product.id, count: 1});
+                    } else {
+                        this.product_count.forEach((el) => {
+                            if(el.id === product.id) {
+                                el.count++;
+                            }
+                        })
+                    }
+                },
+                decrementProductCount(product){
+                    if(this.product_count.findIndex(x => x.id === product.id) >= 0) {
+                        this.product_count.forEach((el) => {
+                            if(el.id === product.id && el.count > 1) {
+                                el.count--;
+                            }
+                        })
+                    }
+                },
+                getProductIndexInArray(product){
+                    if(this.product_count.findIndex(x => x.id === product.id) < 0) {
+                        this.product_count.push({id: product.id, count: 1});
+                    }
+                    for(let i = 0; i < this.product_count.length; i++) {
+                        if(this.product_count[i].id === product.id) {
+                            return i;
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+@endpush
