@@ -1,4 +1,7 @@
 .cabinet_profile {
+    .nav-tabs {
+        border-bottom: none;
+    }
     .nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {
         color: #39C874;
         background: none;
@@ -6,5 +9,51 @@
         border-top: none;
         border-left: none;
         border-right: none;
+    }
+
+    .modal-header {
+        border-bottom: none;
+    }
+    .modal-footer {
+        border-top: none;
+    }
+
+    .modal_link {
+        font-size: 14px;
+    }
+
+    .order_status {
+        background-color: #F0F0F6;
+        padding: 5px 20px;
+        border-radius: 10px;
+        text-align: center;
+    }
+
+    .cabinet_open_order {
+        color: #39C874;
+        background: none;
+        border: none;
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+
+    svg:hover{
+        fill: #39C874;
+    }
+
+    thead{
+        background-color: #F0F0F6;
+        color: #6D6F80;
+        font-size: 14px;
+    }
+
+    tbody{
+        background-color: #ffffff;
+
+        tr {
+            vertical-align: middle;
+        }
     }
 }

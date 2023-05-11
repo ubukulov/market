@@ -7,6 +7,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\StoreController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -30,6 +31,7 @@ Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 # Category
 Route::get('c/{slug}', [CategoryController::class, 'show'])->name('category.products');
 Route::get('p/{slug}', [ProductController::class, 'show'])->name('product.page');
+Route::get('/get-categories-list', [CategoryController::class, 'getCategoryList']);
 
 // Только авторизованные пользователи могут посмотреть
 Route::group(['middleware' => ['auth']], function(){
@@ -42,7 +44,14 @@ Route::group(['middleware' => ['auth']], function(){
         Route::get('/order', [CartController::class, 'order'])->name('cart.order');
     });
 
+    # Cabinet
     Route::group(['prefix' => 'cabinet', 'middleware' => ['auth']], function(){
         Route::get('profile', [UserController::class, 'profile'])->name('cabinet.profile');
+        Route::get('order/{id}/items', [UserController::class, 'getOrderItems']);
+    });
+
+    # My Store
+    Route::group(['prefix' => 'store'], function(){
+        Route::get('/', [StoreController::class, 'index'])->name('store.index');
     });
 });

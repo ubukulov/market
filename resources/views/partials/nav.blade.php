@@ -70,7 +70,7 @@
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link b2b_portal_btn my_shop_btn" href="#">Мой магазин</a>
+                        <a class="nav-link b2b_portal_btn my_shop_btn" href="{{ route('store.index') }}">Мой магазин</a>
                     </li>
 
                     <li class="nav-item basket_link">

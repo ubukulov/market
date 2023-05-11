@@ -15,4 +15,10 @@ class CategoryController extends BaseController
             ->paginate(12);
         return view('category.products', compact('category', 'products'));
     }
+
+    public function getCategoryList()
+    {
+        $categories = Category::all();
+        return response()->json($categories);
+    }
 }

@@ -46,6 +46,13 @@ a {
   transition: 0.5s ease-in-out;
   z-index: 5000;
 }
+.product_page_barcode_btn button {
+  width: 300px;
+  background: #F0F0F6;
+  border-radius: 12px;
+  border: none;
+  padding: 4px;
+}
 .menu nav {
   background-color: #ffffff !important;
 }
@@ -216,6 +223,10 @@ a {
   border: 1px solid #39C874;
   border-radius: 10px;
   padding: 4px;
+}
+svg:hover {
+  cursor: pointer;
+  fill: #39C874;
 }
 .main_menu {
   background-color: #ffffff;
@@ -454,13 +465,6 @@ a {
   justify-content: space-between;
   margin-bottom: 20px;
 }
-.product_page_action_btns .product_page_barcode_btn button {
-  width: 300px;
-  background: #F0F0F6;
-  border-radius: 12px;
-  border: none;
-  padding: 4px;
-}
 .product_page_action_btns .product_page_cart_btn {
   display: flex;
   justify-content: space-between;
@@ -543,6 +547,9 @@ a {
   padding: 10px 50px;
   color: #39C874;
 }
+.cabinet_profile .nav-tabs {
+  border-bottom: none;
+}
 .cabinet_profile .nav-tabs .nav-item.show .nav-link,
 .cabinet_profile .nav-tabs .nav-link.active {
   color: #39C874;
@@ -551,5 +558,64 @@ a {
   border-top: none;
   border-left: none;
   border-right: none;
+}
+.cabinet_profile .modal-header {
+  border-bottom: none;
+}
+.cabinet_profile .modal-footer {
+  border-top: none;
+}
+.cabinet_profile .modal_link {
+  font-size: 14px;
+}
+.cabinet_profile .order_status {
+  background-color: #F0F0F6;
+  padding: 5px 20px;
+  border-radius: 10px;
+  text-align: center;
+}
+.cabinet_profile .cabinet_open_order {
+  color: #39C874;
+  background: none;
+  border: none;
+}
+.cabinet_profile .cabinet_open_order:hover {
+  text-decoration: underline;
+}
+.cabinet_profile svg:hover {
+  fill: #39C874;
+}
+.cabinet_profile thead {
+  background-color: #F0F0F6;
+  color: #6D6F80;
+  font-size: 14px;
+}
+.cabinet_profile tbody {
+  background-color: #ffffff;
+}
+.cabinet_profile tbody tr {
+  vertical-align: middle;
+}
+.store .market_lists {
+  display: flex;
+  margin-top: 20px;
+}
+.store .market_lists .market {
+  display: flex;
+  justify-content: space-between;
+  background-color: #ffffff;
+  border-radius: 30px;
+  padding: 20px;
+  width: 200px;
+  margin-right: 20px;
+}
+.store .market_lists .market .market_settings button {
+  background: none;
+  border: none;
+}
+.store .market_margin {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 40px;
 }
 
