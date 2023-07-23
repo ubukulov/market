@@ -90,6 +90,9 @@
             </div>
         </div>
     </div>
+
+    @include('partials.toast')
+
 @stop
 
 @push('scripts')

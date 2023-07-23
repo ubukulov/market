@@ -6,7 +6,7 @@
         </div>
 
         <div class="row">
-            <div class="col-md-9">
+            <div class="col-md-9" id="categoryProductsList">
                 @foreach($products as $product)
                     <div class="product_card">
                         <a href="{{ route('product.page', ['slug' => $product->slug]) }}">
@@ -61,21 +61,21 @@
 
                     <div class="product_filter_content">
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="1" id="flexCheckDefault1">
+                            <input class="form-check-input" type="checkbox" v-model="isNew" @change="getProductsByFilter()" id="flexCheckDefault1">
                             <label class="form-check-label" for="flexCheckDefault1">
                                 Новинки
                             </label>
                         </div>
 
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="2" id="flexCheckDefault2">
+                            <input class="form-check-input" type="checkbox" v-model="isHit" @change="getProductsByFilter()" id="flexCheckDefault2">
                             <label class="form-check-label" for="flexCheckDefault2">
                                 Хиты продаж
                             </label>
                         </div>
 
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="3" id="flexCheckDefault3">
+                            <input class="form-check-input" type="checkbox" v-model="isPromo" @change="getProductsByFilter()" id="flexCheckDefault3">
                             <label class="form-check-label" for="flexCheckDefault3">
                                 Новое поступление
                             </label>
@@ -118,6 +118,9 @@
 
         </div>
     </div>
+
+    @include('partials.toast')
+
 @stop
 @push('scripts')
     <script>
@@ -127,7 +130,11 @@
                 return {
                     product_count: [],
                     toastHtml: '',
-                    toastSuccess: false
+                    toastSuccess: false,
+                    isNew: false,
+                    isHit: false,
+                    isPromo: false,
+                    listProductsByFilter: []
                 }
             },
             methods: {
@@ -179,7 +186,64 @@
                             return i;
                         }
                     }
+                },
+                getProductsByFilter() {
+                    let formData = new FormData();
+                    if(this.isNew) {
+                        formData.append('isnew', this.isNew);
+                    }
+                    if(this.isHit) {
+                        formData.append('ishit', this.isHit);
+                    }
+                    if(this.isPromo) {
+                        formData.append('ispromo', this.isPromo);
+                    }
+                    axios.post(window.location.href + '/get-products-by-filter', formData)
+                    .then(res => {
+                        console.log('ss', res);
+                        this.listProductsByFilter = res.data;
+                        $("#categoryProductsList").html("");
+                        let html = "";
+                        for(let i=0; i < res.data.data.length; i++) {
+                            let item = res.data.data;
+                            html += "<div class='product_card'>" +
+                                        "<a href='/p/"+item[i].slug+"'>" +
+                                            "<div class='product_img'>" +
+                                                "<img src='"+item[i].thumb[0].path+"'>" +
+                                            "</div> " +
+                                            "<div class=\"product_title\">" +
+                                                "<span>"+item[i].name+"</span>" +
+                                            "</div> " +
+                                            "<div class=\"product_info\">" +
+                                                "<p>Артикуль: "+item[i].article+"</p> " +
+                                                "<p>в наличии: 50</p> " +
+                                                "<p>549 990 тг / 468 000 тг (шт)</p>" +
+                                            "</div>" +
+                                        "</a> " +
+                                        "<div class=\"product_count_btn\">" +
+                                            "<img @click='decrementProductCount("+item[i]+")' src='/img/product/minus.svg') >" +
+                                            "<input v-model='product_count[getProductIndexInArray("+item[i]+")].count' readonly class='product_count_item' type='text'>" +
+                                            "<img @click='incrementProductCount("+item[i]+")' src='/img/product/plus.svg'>" +
+                                        "</div>" +
+                                        "<div class=\"product_cart_add_btn\">" +
+                                            "<button @click=\"cartAdd("+item[i].id+")\" type=\"button\">В корзину</button>" +
+                                        "</div>" +
+                                        "<div class=\"product_barcode_print_btn\">" +
+                                            "<button type=\"button\">" +
+                                                "<img src=\"/img/product/barcode.svg\" alt=\"product_barcode\">&nbsp;Печать\n" +
+                                            "</button>" +
+                                        "</div>" +
+                                    "</div>";
+                        }
+                        $("#categoryProductsList").html(html);
+                    })
+                    .catch(err => {
+                        console.log(err)
+                    })
                 }
+            },
+            created() {
+                console.log('ss', this.listProductsByFilter.length)
             }
         });
     </script>

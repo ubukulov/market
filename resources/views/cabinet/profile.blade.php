@@ -1,4 +1,9 @@
 @extends('layouts.app')
+@push('cabinet_styles')
+    <!-- DataTables -->
+    <link rel="stylesheet" href="/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" href="/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+@endpush
 @section('content')
     <div class="main_content">
         <div class="category-title">
@@ -85,13 +90,16 @@
                             <div class="row">
                                 <div class="col-md-9">
                                     <br>
-                                    <table class="table table-borderless">
+                                    <table id="cabinet_history_orders" class="table table-borderless">
                                         <thead>
-                                        <th>№</th>
-                                        <th>Дата создания</th>
-                                        <th>Сумма(тг)</th>
-                                        <th>Статус</th>
-                                        <th colspan="2"></th>
+                                            <tr>
+                                                <th>№</th>
+                                                <th>Дата создания</th>
+                                                <th>Сумма(тг)</th>
+                                                <th>Статус</th>
+                                                <th></th>
+                                                <th></th>
+                                            </tr>
                                         </thead>
 
                                         <tbody>
@@ -183,29 +191,29 @@
                                         <div class="product_filter_header">
                                             <div class="p__filter_title">Фильтр</div>
                                             <div class="p__filter_reset">
-                                                <a href="#">Сбросить</a>
+                                                <span @click="resetCabinetHistoryFilters()">Сбросить</span>
                                             </div>
                                         </div>
                                         <div class="product_filter_content">
                                             <div class="form-check">
-                                                <input type="checkbox" value="1" id="flexCheckDefault1" class="form-check-input">
+                                                <input type="checkbox" checked value="Новый" name="cabinet_history_order_filter" id="flexCheckDefault1" class="form-check-input">
                                                 <label for="flexCheckDefault1" class="form-check-label">Новые</label>
                                             </div>
                                             <div class="form-check">
-                                                <input type="checkbox" value="2" id="flexCheckDefault1" class="form-check-input">
-                                                <label for="flexCheckDefault1" class="form-check-label">Оплаченные</label>
+                                                <input type="checkbox" value="Оплаченные" name="cabinet_history_order_filter" id="flexCheckDefault2" class="form-check-input">
+                                                <label for="flexCheckDefault2" class="form-check-label">Оплаченные</label>
                                             </div>
                                             <div class="form-check">
-                                                <input type="checkbox" value="3" id="flexCheckDefault2" class="form-check-input">
-                                                <label for="flexCheckDefault2" class="form-check-label">Отгруженные</label>
+                                                <input type="checkbox" value="Отгруженные" name="cabinet_history_order_filter" id="flexCheckDefault3" class="form-check-input">
+                                                <label for="flexCheckDefault3" class="form-check-label">Отгруженные</label>
                                             </div>
                                             <div class="form-check">
-                                                <input type="checkbox" value="4" id="flexCheckDefault3" class="form-check-input">
-                                                <label for="flexCheckDefault3" class="form-check-label">Доставленные</label>
+                                                <input type="checkbox" value="Доставленные" name="cabinet_history_order_filter" id="flexCheckDefault4" class="form-check-input">
+                                                <label for="flexCheckDefault4" class="form-check-label">Доставленные</label>
                                             </div>
                                             <div class="form-check">
-                                                <input type="checkbox" value="4" id="flexCheckDefault3" class="form-check-input">
-                                                <label for="flexCheckDefault3" class="form-check-label">Отмененные</label>
+                                                <input type="checkbox" value="Отмененные" name="cabinet_history_order_filter" id="flexCheckDefault5" class="form-check-input">
+                                                <label for="flexCheckDefault5" class="form-check-label">Отмененные</label>
                                             </div>
                                         </div>
                                     </div>
@@ -217,9 +225,59 @@
             </div>
         </div>
     </div>
+
+    @include('partials.toast')
 @stop
 
 @push('scripts')
+    <!-- DataTables -->
+    <script src="/plugins/datatables/jquery.dataTables.min.js"></script>
+    <script src="/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+    <script src="/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+    <script src="/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+
+    <script>
+        $(function () {
+            $("#cabinet_history_orders").DataTable({
+                responsive: true,
+                autoWidth: false,
+                // bFilter: false,
+                bInfo: false,
+                paging: false,
+                dom: 'rtip',
+                language: {
+                    "url": "/dist/Russian.json"
+                },
+            });
+
+            $.fn.dataTable.ext.search.push(
+                function( settings, searchData, index, rowData, counter ) {
+
+                    var offices = $('input:checkbox[name="cabinet_history_order_filter"]:checked').map(function() {
+                        return this.value;
+                    }).get();
+
+
+                    if (offices.length === 0) {
+                        return true;
+                    }
+
+                    if (offices.indexOf(searchData[3]) !== -1) {
+                        return true;
+                    }
+
+                    return false;
+                }
+            );
+
+            var table = $('#cabinet_history_orders').DataTable();
+
+            $('input:checkbox').on('change', function () {
+                table.draw();
+            });
+        });
+    </script>
+
     <script>
         new Vue({
             el: '#wrap',
@@ -228,7 +286,7 @@
                     toastHtml: '',
                     toastSuccess: false,
                     items: [],
-                    orderName: 'Заказ № '
+                    orderName: 'Заказ № ',
                 }
             },
             methods: {
@@ -249,6 +307,13 @@
                         amount += this.items[i].quantity * this.items[i].price;
                     }
                     return amount.toLocaleString('ru');
+                },
+                resetCabinetHistoryFilters(){
+                    $('input:checkbox[name="cabinet_history_order_filter"]').map(function(){
+                        if(this.checked) {
+                            this.checked = false;
+                        }
+                    });
                 }
             }
         });

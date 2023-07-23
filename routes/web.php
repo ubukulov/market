@@ -32,6 +32,7 @@ Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 Route::get('c/{slug}', [CategoryController::class, 'show'])->name('category.products');
 Route::get('p/{slug}', [ProductController::class, 'show'])->name('product.page');
 Route::get('/get-categories-list', [CategoryController::class, 'getCategoryList']);
+Route::post('/c/{slug}/get-products-by-filter', [CategoryController::class, 'getProductsByFilter']);
 
 // Только авторизованные пользователи могут посмотреть
 Route::group(['middleware' => ['auth']], function(){

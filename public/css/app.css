@@ -419,9 +419,11 @@ svg:hover {
   font-size: 20px;
   font-weight: bold;
 }
-.product_filter_block .product_filter_header .p__filter_reset a {
+.product_filter_block .product_filter_header .p__filter_reset a,
+.product_filter_block .product_filter_header .p__filter_reset span {
   color: #39C874;
   text-decoration: none;
+  cursor: pointer;
 }
 .product_filter_block .product_filter_content {
   padding-top: 20px;
