@@ -55,4 +55,8 @@ Route::group(['middleware' => ['auth']], function(){
     Route::group(['prefix' => 'store'], function(){
         Route::get('/', [StoreController::class, 'index'])->name('store.index');
     });
+
+    # Настройки маркетплейсов пользователя
+    Route::get('get-marketplaces', [StoreController::class, 'getMarketPlaces']);
+    Route::post('marketplace/category/margins', [StoreController::class, 'saveMarketPlaceCategoryMargins']);
 });

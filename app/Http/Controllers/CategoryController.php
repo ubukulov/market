@@ -12,6 +12,7 @@ class CategoryController extends BaseController
     {
         $category = Category::whereSlug($slug)->first();
         $products = Product::where(['category_id' => $category->id])
+            ->whereRaw('LENGTH(quantity) > 1')
             ->paginate(12);
         return view('category.products', compact('category', 'products'));
     }

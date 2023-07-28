@@ -19,7 +19,7 @@
                             <th scope="col">#</th>
                             <th scope="col">Фото</th>
                             <th scope="col">Название</th>
-                            <th scope="col">Остаток(шт)</th>
+                            <th scope="col">Кол-во (шт)</th>
                             <th scope="col">Цена(тг)</th>
                             <th scope="col">Статус</th>
                             <th scope="col">Штрих-код</th>
@@ -41,8 +41,8 @@
                                         {{ $cartItem['cart']['title'] }}
                                     </a>
                                 </td>
-                                <td>{{ $cartItem['product']->getQuantity() }}</td>
-                                <td>{{ $cartItem['product']->getPriceFormatter() }} / {{ $cartItem['product']->getPriceFormatter(2) }}</td>
+                                <td>{{ $cartItem['cart']['quantity'] }}</td>
+                                <td>{{ $cartItem['product']->getPriceFormatter() }} тг</td>
                                 <td>В наличии</td>
                                 <td>
                                     <button type="button" class="barcode_btn">

@@ -19,8 +19,22 @@ class CreateTableUserMarketplaceSettings extends Migration
             $table->unsignedBigInteger('marketplace_id');
             $table->string('client_id');
             $table->string('client_secret');
-            
+            $table->string('api')->nullable();
+            $table->string('access_token')->nullable();
+            $table->string('refresh_token')->nullable();
+            $table->string('token_type')->nullable();
+            $table->string('expires_date')->nullable();
             $table->timestamps();
+
+            $table->foreign('user_id')
+                ->references('id')
+                ->on('users')
+                ->onDelete('cascade');
+
+            $table->foreign('marketplace_id')
+                ->references('id')
+                ->on('marketplaces')
+                ->onDelete('cascade');
         });
     }
 

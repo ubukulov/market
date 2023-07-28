@@ -9,6 +9,7 @@
         "ext-curl": "*",
         "ext-json": "*",
         "cviebrock/eloquent-sluggable": "^8.0",
+        "encore/laravel-admin": "^1.8",
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^7.0.1",
         "jackiedo/cart": "^3.0",

@@ -10,7 +10,7 @@ class BaseController extends Controller
 {
     public function __construct()
     {
-        $categories = Category::where('level', 1)->get();
+        $categories = Category::where('level', 1)->orderBy('id')->get();
         View::share('categories', $categories);
     }
 }

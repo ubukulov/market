@@ -9,6 +9,8 @@ class MarketPlace extends Model
 {
     use HasFactory;
 
+    protected $table = 'marketplaces';
+
     protected $fillable = [
         'name', 'logo'
     ];

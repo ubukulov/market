@@ -31,7 +31,7 @@ class CartController extends BaseController
             $product = Product::findOrFail($item_details['id']);
             $cart_items[] = [
                 'cart' => $item_details,
-                'product' => $product
+                'product' => $product,
             ];
         }
 //        dd($cart_items);
@@ -51,7 +51,7 @@ class CartController extends BaseController
             'id'       => $product->id,
             'title'    => $product->name,
             'quantity' => $data['product_count'],
-            'price'    => $product->price2,
+            'price'    => $product->price,
         ]);
 
         return response('Товар успешно добавлен в корзину!', 200);

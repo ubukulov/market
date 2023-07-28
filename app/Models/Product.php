@@ -64,9 +64,9 @@ class Product extends Model
         //$products = Product::where(['category_id' => $this->category_id, ''])
     }
 
-    public function getPriceFormatter($price = 1)
+    public function getPriceFormatter()
     {
-        return ($price == 1) ? number_format($this->price2, 0, ',', ' ') : number_format($this->price1, 0, ',', ' ');
+        return number_format($this->price, 0, ',', ' ');
     }
 
     public function getLink()

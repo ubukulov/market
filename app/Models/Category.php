@@ -16,7 +16,7 @@ class Category extends Model
     protected static $id = 0;
 
     protected $fillable = [
-        'foreign_id', 'name', 'slug', 'left', 'right', 'level'
+        'foreign_id', 'name', 'slug', 'margin', 'left', 'right', 'level'
     ];
 
     protected $dates = [
@@ -57,7 +57,9 @@ class Category extends Model
 
     public function getItems()
     {
-        return Category::whereRaw("categories.left > " . $this->left . " AND categories.right < " . $this->right . ' AND categories.level=' . $this->level . ' +1')->get();
+        return Category::whereRaw("categories.left > " . $this->left . " AND categories.right < " . $this->right . ' AND categories.level=' . $this->level . ' +1')
+            ->orderBy('id')
+            ->get();
     }
 
     public function products()

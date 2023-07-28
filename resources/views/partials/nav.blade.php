@@ -65,9 +65,9 @@
                         </form>
                     </li>
 
-                    <li class="nav-item">
+                    {{--<li class="nav-item">
                         <a class="nav-link b2b_portal_btn" href="#">B2B portal</a>
-                    </li>
+                    </li>--}}
 
                     <li class="nav-item">
                         <a class="nav-link b2b_portal_btn my_shop_btn" href="{{ route('store.index') }}">Мой магазин</a>
