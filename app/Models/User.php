@@ -54,4 +54,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(Order::class)->with('items');
     }
+
+    public function marketplace_settings()
+    {
+        return $this->hasMany(UserMarketplaceSetting::class);
+    }
 }

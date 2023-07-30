@@ -19,4 +19,14 @@ class UserMarketplaceSetting extends Model
     protected $dates = [
         'created_at', 'updated_at'
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function marketplace()
+    {
+        return $this->belongsTo(MarketPlace::class);
+    }
 }

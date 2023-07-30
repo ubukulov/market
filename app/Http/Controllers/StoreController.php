@@ -11,7 +11,12 @@ class StoreController extends BaseController
 {
     public function index()
     {
-        return view('store.index');
+        $listCategoryMarginsByMarket = UserMarketCategoryMargin::where(['user_id' => Auth::user()->id])
+                ->selectRaw('user_market_category_margins.*, categories.name as cat_name, marketplaces.name as market_name, marketplaces.logo as market_logo')
+                ->join('categories', 'categories.id', 'user_market_category_margins.category_id')
+                ->join('marketplaces', 'marketplaces.id', 'user_market_category_margins.marketplace_id')
+                ->get();
+        return view('store.index', compact('listCategoryMarginsByMarket'));
     }
 
     public function getMarketPlaces()

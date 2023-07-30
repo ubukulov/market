@@ -16,6 +16,7 @@ class CreateTableMarketplaces extends Migration
         Schema::create('marketplaces', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->string('slug')->unique();
             $table->string('logo')->nullable();
             $table->timestamps();
         });

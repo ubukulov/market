@@ -18,7 +18,7 @@
                             <div class="carousel-inner">
                                 @foreach($images as $image)
                                     <div class="carousel-item @if($loop->index == 0) active @endif">
-                                        <img src="{{ $image->path }}" class="d-block" alt="...">
+                                        <img @if(substr($image->path,0,1) == 'f') src="/uploads/admin/{{ $image->path }}" @else src="{{ $image->path }}" @endif class="d-block" alt="...">
                                     </div>
                                 @endforeach
                             </div>
@@ -68,19 +68,21 @@
                     <div class="tab-content" id="myTabContent">
                         <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">тут описание</div>
                         <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                            @if(isset($properties->elements[0]))
                             @foreach($properties->elements[0]->properties as $property)
                             <div class="product_property">
                                 <div class="product_property_name">{{ $property->name }}</div>
                                 <div class="product_property_value">{!! $property->value !!}</div>
                             </div>
                             @endforeach
+                            @endif
                         </div>
                     </div>
                 </div>
             </div>
         </div>
 
-        <div class="content-title mt-4">
+        {{--<div class="content-title mt-4">
             <h4>Сопутствующие товары</h4>
         </div>
 
@@ -88,7 +90,7 @@
             <div class="col-md-12">
                 НУЖНО РЕАЛИЗОВАТЬ!
             </div>
-        </div>
+        </div>--}}
     </div>
 
     @include('partials.toast')

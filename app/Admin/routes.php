@@ -16,4 +16,7 @@ Route::group([
     $router->resource('market-places', 'MarketPlaceController');
     $router->resource('users', 'UserController');
     $router->resource('users-marketplace-settings', 'UserMarketSettingController');
+
+    # Товары
+    $router->resource('products', 'ProductController');
 });

@@ -35,7 +35,7 @@ class Product extends Model
 
     public function images()
     {
-        return $this->hasMany(ProductImage::class)->where('thumbs', 0);
+        return $this->hasMany(ProductImage::class);
     }
 
     public function thumb()
@@ -49,7 +49,6 @@ class Product extends Model
         if(isset($thumbs[0])) {
             return $thumbs[0]->path;
         }
-        return false;
     }
 
     public function getQuantity()
@@ -64,9 +63,9 @@ class Product extends Model
         //$products = Product::where(['category_id' => $this->category_id, ''])
     }
 
-    public function getPriceFormatter()
+    public function getPriceFormatter($price)
     {
-        return number_format($this->price, 0, ',', ' ');
+        return number_format($price, 0, ',', ' ');
     }
 
     public function getLink()

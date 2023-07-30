@@ -1,4 +1,7 @@
 @push('styles')
+    <!-- DataTables -->
+    <link rel="stylesheet" href="/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" href="/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
     <style>
         .select2-close-mask{
@@ -34,6 +37,8 @@
                             </div>
                         </div>
                     </div>
+
+                    @include('store.category_lists')
 
                     <!-- Modal -->
                     <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" style="overflow: hidden" aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -75,6 +80,11 @@
 @stop
 
 @push('scripts')
+    <!-- DataTables -->
+    <script src="/plugins/datatables/jquery.dataTables.min.js"></script>
+    <script src="/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+    <script src="/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+    <script src="/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
     <script>
         new Vue({
@@ -88,7 +98,7 @@
                     category_id: null,
                     margin: 0,
                     marketplaces: [],
-                    market_id: null
+                    market_id: null,
                 }
             },
             methods: {
@@ -122,15 +132,17 @@
                         })
                 },
                 saveMarketCategoryMargin(){
-                    //console.log('s', $('#mySelect2').val());
+                    this.category_id = $('#mySelect2').val();
+                    console.log('cat_id', this.category_id);
                     let formData = new FormData();
                     formData.append('marketplace_id', this.market_id);
-                    formData.append('category_id', $('#mySelect2').val());
+                    formData.append('category_id', this.category_id);
                     formData.append('margin', this.margin);
 
                     axios.post('marketplace/category/margins', formData)
                     .then(res => {
                         console.log(res);
+                        $("#staticBackdrop").modal('hide');
                         this.toastHtml = res.data;
                         this.toastSuccess = true;
                     })
@@ -151,6 +163,16 @@
             $('#mySelect2').select2({
                 placeholder: "Выберите категорию",
             });
+
+            $("#cat_table").DataTable({
+                "responsive": true,
+                "autoWidth": false,
+                "language": {
+                    "url": "/dist/Russian.json"
+                }
+            });
+
         });
+
     </script>
 @endpush

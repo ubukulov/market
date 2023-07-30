@@ -56,7 +56,11 @@
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Партнерам</a>
+                        <a class="nav-link" href="{{ route('home') }}">Партнерам</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('home') }}">О компании</a>
                     </li>
 
                     <li class="nav-item li_search">
@@ -65,9 +69,28 @@
                         </form>
                     </li>
 
-                    {{--<li class="nav-item">
-                        <a class="nav-link b2b_portal_btn" href="#">B2B portal</a>
-                    </li>--}}
+                    <li class="nav-item">
+                        @if(Auth::check())
+                            <a class="nav-link b2b_portal_btn auth_user" href="#">B2B portal</a>
+
+                            <div class="auth_user_information">
+                                <div class="user_full_name">{{ Auth::user()->full_name }}</div>
+                                <div class="user_email">{{ Auth::user()->email }}</div>
+                                <hr>
+                                <div class="auth_user_links">
+                                    <a href="{{ route('cabinet.profile') }}">Профиль</a>
+                                </div>
+                                <div class="auth_user_links">
+                                    <a href="#">История заказов</a>
+                                </div>
+                                <div class="auth_user_links">
+                                    <a href="{{ route('logout') }}">Выйти</a>
+                                </div>
+                            </div>
+                        @else
+                            <a class="nav-link b2b_portal_btn" href="{{ route('login') }}">B2B portal</a>
+                        @endif
+                    </li>
 
                     <li class="nav-item">
                         <a class="nav-link b2b_portal_btn my_shop_btn" href="{{ route('store.index') }}">Мой магазин</a>

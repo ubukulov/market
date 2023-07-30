@@ -11,7 +11,7 @@
                     <div class="product_card">
                         <a href="{{ route('product.page', ['slug' => $product->slug]) }}">
                             <div class="product_img">
-                                <img src="{{ $product->getThumb() }}" alt="">
+                                <img @if(substr($product->getThumb(),0,1)  == 'f') src="/uploads/admin/{{ $product->getThumb() }}" @else src="{{ $product->getThumb() }}" @endif alt="">
                             </div>
 
                             <div class="product_title">
@@ -21,7 +21,11 @@
                             <div class="product_info">
                                 <p>Артикуль: {{ $product->article }}</p>
                                 <p>в наличии: {{ $product->getQuantity() }}</p>
-                                <p>{{ $product->getPriceFormatter() }} тг (шт)</p>
+                                @if(Auth::check())
+                                <p>{{ $product->getPriceFormatter($product->price2) }} тг (шт) / {{ $product->getPriceFormatter($product->price1) }} тг (шт)</p>
+                                @else
+                                <p>{{ $product->getPriceFormatter($product->price2) }} тг (шт)</p>
+                                @endif
                             </div>
                         </a>
 

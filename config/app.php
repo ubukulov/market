@@ -176,6 +176,10 @@ return [
         App\Providers\RouteServiceProvider::class,
         App\Providers\AlStyleServiceProvider::class,
         Jackiedo\Cart\CartServiceProvider::class,
+        App\Providers\StyleServiceProvider::class,
+        App\Providers\WbServiceProvider::class,
+        App\Providers\HalykServiceProvider::class,
+        App\Providers\OzonServiceProvider::class,
     ],
 
     /*
@@ -232,6 +236,10 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'Style' => App\Facades\AlStyle::class,
         'Cart' => Jackiedo\Cart\Facades\Cart::class,
+        //'Style' => App\Facades\Style::class,
+        'WB' => App\Facades\WB::class,
+        'HK' => App\Facades\HK::class,
+        'OZON' => App\Facades\Ozon::class,
     ],
 
 ];
