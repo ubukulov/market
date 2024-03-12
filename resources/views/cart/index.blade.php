@@ -42,7 +42,7 @@
                                     </a>
                                 </td>
                                 <td>{{ $cartItem['cart']['quantity'] }}</td>
-                                <td>{{ $cartItem['product']->getPriceFormatter() }} тг</td>
+                                <td>{{ $cartItem['product']->getPriceFormatter($cartItem['cart']['price']) }} тг</td>
                                 <td>В наличии</td>
                                 <td>
                                     <button type="button" class="barcode_btn">
